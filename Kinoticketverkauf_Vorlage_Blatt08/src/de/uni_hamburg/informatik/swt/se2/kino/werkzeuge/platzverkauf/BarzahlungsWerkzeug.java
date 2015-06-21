@@ -11,7 +11,7 @@ public class BarzahlungsWerkzeug extends PlatzVerkaufsWerkzeug
 	{
 		_ui = new BarzahlungsWerkzeugUI();
 	}
-	
+	//test
 	  //TODO _restBetragTextField.addPropertyChangeListener("value",this);(!)
 	
     /**
