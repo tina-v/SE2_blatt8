@@ -110,6 +110,8 @@ public class BarzahlungsWerkzeugUI
         
     }
 
+    
+    
 
     /**
      * gibt das _verkaufenButton wieder.
@@ -128,6 +130,15 @@ public class BarzahlungsWerkzeugUI
     {
         return _abbrechenButton;
     }
+    
+    /**
+     * gibt das Eingabefeld für den Preis zurueck
+     * @return _eingabepreisTextfield
+     */
+    public JFormattedTextField getEingabepreisTextfield()
+    {
+        return _eingabepreisTextfield;
+    }
 
     /**
      * gibt das _hauptPanel wieder.
@@ -136,5 +147,10 @@ public class BarzahlungsWerkzeugUI
     public JPanel getUIPanel()
     {
         return _hauptPanel;
+    }
+    
+    public JLabel getWechselgeldLabel()
+    {
+        return _wechselgeldLabel;
     }
 }
