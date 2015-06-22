@@ -218,19 +218,17 @@ public class PlatzVerkaufsWerkzeug
     {
         Set<Platz> plaetze = _ui.getPlatzplan()
             .getAusgewaehltePlaetze();
-        vorstellung.verkaufePlaetze(plaetze);
-        aktualisierePlatzplan();
 
-        //muss in der Reihenfolge noch richtig eingebunden werden, 
-        //nur damit schon mal ein Fenster erzeugt wird
-        final int preis = _vorstellung.getPreisFuerPlaetze(plaetze);
-        SwingUtilities.invokeLater(new Runnable()
-        {
-            public void run()
-            {
-                new BarzahlungsWerkzeug(preis);
-            }
-        });
+        int preis = _vorstellung.getPreisFuerPlaetze(plaetze);
+        BarzahlungsWerkzeug _barzahlung = new BarzahlungsWerkzeug(preis);
+        
+        //if (_barzahlung.verkaufWarErfolgreich() == true)
+        //{
+            vorstellung.verkaufePlaetze(plaetze);
+            
+        //} //einfach wieder einkommentieren wenn es die Methode gibt
+                
+        aktualisierePlatzplan();
     }
 
     /**
