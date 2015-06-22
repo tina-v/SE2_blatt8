@@ -1,9 +1,7 @@
-package de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.platzverkauf;
+package de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.barzahlung;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.platzverkauf.BarzahlungsWerkzeugUI;
 
 
 // import javax.swing.SwingUtilities;

@@ -1,4 +1,4 @@
-package de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.platzverkauf;
+package de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.barzahlung;
 
 
 import java.awt.GridLayout;
@@ -12,6 +12,8 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
+
+import de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.platzverkauf.PlatzVerkaufsWerkzeug;
 
 /**
  * Die UI des {@link PlatzVerkaufsWerkzeug}.
