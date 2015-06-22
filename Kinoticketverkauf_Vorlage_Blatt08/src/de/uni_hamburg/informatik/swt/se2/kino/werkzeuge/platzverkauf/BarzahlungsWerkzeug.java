@@ -28,7 +28,9 @@ public class BarzahlungsWerkzeug
         _gesamtpreis = gesamtpreis;
         _ui = new BarzahlungsWerkzeugUI(_gesamtpreis);
         // OK-Button erstmal inaktiv gesetzt
-        _ui.setVerkaufenButtonAktiv(false);
+        //_ui.setVerkaufenButtonAktiv(false);
+        _ui.getVerkaufenButton().setEnabled(false); //funktioniert auch ohne Methode :)
+        
         registriereUIAktionen();
     }
 
@@ -42,7 +44,7 @@ public class BarzahlungsWerkzeug
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                fuehreVerkaufWeiter();
+                verkaufeKarten();
                 
             }
         });
@@ -69,15 +71,19 @@ public class BarzahlungsWerkzeug
         
     }
 
-    private void beruecksichtigePreiseingabe(int gezahlterBetrag)
+    private void beruecksichtigePreiseingabe() //abfrage preis unten, so wieder kompilierbar
     {
         // TODO Wechselgeld berechnen, Button-Aktivität steuern
-        System.out.println("Preis verändert"); //(als Test)
+        //System.out.println("Preis verändert"); //(als Test)
+        int geldeingabe = Integer.parseInt(_ui.getEingabepreisTextfield().getText());
         
-        
-        
-        
-      
+        if ((_gesamtpreis - geldeingabe) <= 0)
+        {
+            //Wechselgeld setzen
+            _ui.getWechselgeldLabel().setText((geldeingabe - _gesamtpreis) + "");
+            //Button aktivieren
+            _ui.getVerkaufenButton().setEnabled(true);
+        }
     }
 
     private void brecheVerkaufAb()
@@ -85,34 +91,24 @@ public class BarzahlungsWerkzeug
         // TODO Verkaufsabbruch implementieren, kommentieren
         // System.out.println("Abbruch"); //(als Test)
         
-        //_ui. Methode Zum Fensterschliessen
         _verkauf = false;
-
+        _ui.close(); //_ui. Methode Zum Fensterschliessen
     }
 
-    private void fuehreVerkaufWeiter()
+    private void verkaufeKarten()
     {
         // TODO Verkaufsaktion implementieren, kommentieren
         // System.out.println("Verkauf"); //(als Test)
     	
-    	//_ui- Methode zum Fensterschliessen
     	_verkauf = true;
-    	
-        
+    	_ui.close(); //_ui- Methode zum Fensterschliessen
     }
 
     /**
-     * Setzt den Restbetrag in abhängigkeit vom Gesamtpreis und der _eingabe fest im Feld _restBetragTextLabel.
+     * Gibt an, ob der Barverkauf durchgefuehrt oder abgebrochen 
      * 
-     * @param int gesamtpreis
+     * @return _verkauf;
      */
-    public void setRestbetrag(int gesamtpreis)
-
-    {
-        //TODO reminder: int gesamtpreis ist gerade nur lokal.
-    	
-    }
-    
     public boolean verkaufWarErfolgreich()
     {
     	return _verkauf;

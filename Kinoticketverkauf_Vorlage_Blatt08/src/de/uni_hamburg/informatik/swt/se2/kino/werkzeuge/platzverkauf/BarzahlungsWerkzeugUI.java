@@ -1,6 +1,6 @@
 package de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.platzverkauf;
 
-import java.awt.Dialog;
+
 import java.awt.GridLayout;
 import java.text.NumberFormat;
 
@@ -165,5 +165,10 @@ public class BarzahlungsWerkzeugUI
     public void setVerkaufenButtonAktiv(boolean aktiv)
     {
     	_verkaufenButton.setEnabled(aktiv);
+    }
+    
+    public void close()
+    {
+        _dialog.dispose();
     }
 }
