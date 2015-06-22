@@ -14,6 +14,8 @@ public class BarzahlungsWerkzeug
     private BarzahlungsWerkzeugUI _ui;
     // der zu zahlende Preis
     private int _gesamtpreis;
+    // gibt an, ob Verkauf erfolgreich war
+    private boolean _verkauf;
 
     /**
      * Erzeugt ein neues BarzahlungsWerkzeug. 
@@ -35,19 +37,18 @@ public class BarzahlungsWerkzeug
         // TODO Aktionen tatsächlich registrieren (funktioniert anscheinend nicht)
 
         //Verkaufen-Button
-        _ui.getVerkaufenButton()
-        .addActionListener(new ActionListener()
+        _ui.getVerkaufenButton().addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent e)
             {
                 fuehreVerkaufWeiter();
+                
             }
         });
 
         //Abbruchsbutton
-        _ui.getAbbrechenButton()
-        .addActionListener(new ActionListener()
+        _ui.getAbbrechenButton().addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent e)
@@ -57,8 +58,7 @@ public class BarzahlungsWerkzeug
         });
 
         //Geldeingabe
-        _ui.getEingabepreisTextfield()
-        .addActionListener(new ActionListener()
+        _ui.getEingabepreisTextfield().addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent e)
@@ -69,10 +69,13 @@ public class BarzahlungsWerkzeug
         
     }
 
-    private void beruecksichtigePreiseingabe()
+    private void beruecksichtigePreiseingabe(int gezahlterBetrag)
     {
         // TODO Wechselgeld berechnen, Button-Aktivität steuern
         System.out.println("Preis verändert"); //(als Test)
+        
+        
+        
         
       
     }
@@ -80,14 +83,21 @@ public class BarzahlungsWerkzeug
     private void brecheVerkaufAb()
     {
         // TODO Verkaufsabbruch implementieren, kommentieren
-        System.out.println("Abbruch"); //(als Test)
+        // System.out.println("Abbruch"); //(als Test)
+        
+        //_ui. Methode Zum Fensterschliessen
+        _verkauf = false;
 
     }
 
     private void fuehreVerkaufWeiter()
     {
         // TODO Verkaufsaktion implementieren, kommentieren
-        System.out.println("Verkauf"); //(als Test)
+        // System.out.println("Verkauf"); //(als Test)
+    	
+    	//_ui- Methode zum Fensterschliessen
+    	_verkauf = true;
+    	
         
     }
 
@@ -100,6 +110,11 @@ public class BarzahlungsWerkzeug
 
     {
         //TODO reminder: int gesamtpreis ist gerade nur lokal.
+    	
     }
     
+    public boolean verkaufWarErfolgreich()
+    {
+    	return _verkauf;
+    }
 }
