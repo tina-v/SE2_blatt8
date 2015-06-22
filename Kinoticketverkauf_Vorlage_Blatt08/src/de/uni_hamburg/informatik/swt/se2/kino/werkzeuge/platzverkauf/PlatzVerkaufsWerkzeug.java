@@ -225,9 +225,9 @@ public class PlatzVerkaufsWerkzeug
         if (_barzahlung.verkaufWarErfolgreich() == true)
         {
             vorstellung.verkaufePlaetze(plaetze);
+            aktualisierePlatzplan();
         } 
-                
-        aktualisierePlatzplan();
+  
     }
 
     /**
