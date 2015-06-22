@@ -222,11 +222,10 @@ public class PlatzVerkaufsWerkzeug
         int preis = _vorstellung.getPreisFuerPlaetze(plaetze);
         BarzahlungsWerkzeug _barzahlung = new BarzahlungsWerkzeug(preis);
         
-        //if (_barzahlung.verkaufWarErfolgreich() == true)
-        //{
+        if (_barzahlung.verkaufWarErfolgreich() == true)
+        {
             vorstellung.verkaufePlaetze(plaetze);
-            
-        //} //einfach wieder einkommentieren wenn es die Methode gibt
+        } 
                 
         aktualisierePlatzplan();
     }
