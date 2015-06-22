@@ -32,6 +32,7 @@ public class BarzahlungsWerkzeug
         _ui.getVerkaufenButton().setEnabled(false); //funktioniert auch ohne Methode :)
         
         registriereUIAktionen();
+        _ui.zeigeFenster();
     }
 
     private void registriereUIAktionen()

@@ -2,6 +2,7 @@ package de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.platzverkauf;
 
 
 import java.awt.GridLayout;
+import java.awt.Dialog;
 import java.text.NumberFormat;
 
 import javax.swing.JButton;
@@ -67,12 +68,20 @@ public class BarzahlungsWerkzeugUI
         _dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         _dialog.setTitle(TITEL);
         _dialog.setSize(WIDTH, HEIGHT);
- //       _dialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+       _dialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
 
         _dialog.add(_hauptPanel);
-        _dialog.setVisible(true);
+        
     }
 
+    /**
+     * Setzt das Fenster auf sichtbar (aus dem Konstruktor herausgezogen)
+     */
+    public void zeigeFenster()
+    {
+        _dialog.setVisible(true);
+    }
+    
     /**
      * Erstellt das Hauptpanel im Gridlayout
      */
