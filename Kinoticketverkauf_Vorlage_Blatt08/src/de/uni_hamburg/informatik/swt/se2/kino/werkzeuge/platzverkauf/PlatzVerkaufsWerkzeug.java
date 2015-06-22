@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Set;
 
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.Platz;
 import de.uni_hamburg.informatik.swt.se2.kino.materialien.Kinosaal;
@@ -220,10 +219,12 @@ public class PlatzVerkaufsWerkzeug
         Set<Platz> plaetze = _ui.getPlatzplan()
             .getAusgewaehltePlaetze();
 
+        //Barzahlungsdialog oeffnen
         int preis = _vorstellung.getPreisFuerPlaetze(plaetze);
         BarzahlungsWerkzeug _barzahlung = new BarzahlungsWerkzeug(preis);
         
-        if (_barzahlung.verkaufWarErfolgreich() == true)
+        //Abfrage, ob verkauft oder abgebroechen wurde
+        if (_barzahlung.verkaufWarErfolgreich())
         {
             vorstellung.verkaufePlaetze(plaetze);
             aktualisierePlatzplan();

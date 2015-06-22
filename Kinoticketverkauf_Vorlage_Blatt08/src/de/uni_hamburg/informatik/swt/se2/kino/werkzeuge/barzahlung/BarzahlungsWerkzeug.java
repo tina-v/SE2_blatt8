@@ -17,17 +17,17 @@ public class BarzahlungsWerkzeug
 
     /**
      * Erzeugt ein neues BarzahlungsWerkzeug. 
-     * (Da der Preis im Platzverkaufswerkzeug verfügbar ist, macht eine Übergabe Sinn) 
-     * 
+     * (Preis soll aus dem Platzverkaufswerkzeug uebergeben werden.)
+     *  
      * @param gesamtpreis der zu zahlende Gesamtpreis fuer die ausgewaehlten Plaetze  
      */
     public BarzahlungsWerkzeug(int gesamtpreis)
     {
         _gesamtpreis = gesamtpreis;
         _ui = new BarzahlungsWerkzeugUI(_gesamtpreis);
+        
         // OK-Button erstmal inaktiv gesetzt
-        //_ui.setVerkaufenButtonAktiv(false);
-        _ui.getVerkaufenButton().setEnabled(false); //funktioniert auch ohne Methode :)
+        _ui.getVerkaufenButton().setEnabled(false); 
         
         registriereUIAktionen();
         _ui.zeigeFenster();
@@ -70,10 +70,11 @@ public class BarzahlungsWerkzeug
         
     }
 
-    private void beruecksichtigePreiseingabe() //abfrage preis unten, so wieder kompilierbar
+    /**
+     * Aktion, die ausgefuehrt wird wenn ein neuer Geldbetrag eingegeben wird.
+     */
+    private void beruecksichtigePreiseingabe() 
     {
-        // TODO Wechselgeld berechnen, Button-Aktivität steuern
-        //System.out.println("Preis verändert"); //(als Test)
         int geldeingabe = Integer.parseInt(_ui.getEingabepreisTextfield().getText());
         
         if ((_gesamtpreis - geldeingabe) <= 0)
@@ -85,22 +86,22 @@ public class BarzahlungsWerkzeug
         }
     }
 
+    /**
+     * Aktion, die ausgefuehrt wird wenn der "Abbrechen" Button gedrueckt wird.
+     */
     private void brecheVerkaufAb()
     {
-        // TODO Verkaufsabbruch implementieren, kommentieren
-        // System.out.println("Abbruch"); //(als Test)
-        
         _verkauf = false;
-        _ui.close(); //_ui. Methode Zum Fensterschliessen
+        _ui.schliesseFenster(); 
     }
 
+    /**
+     * Aktion, die ausgefuehrt wird, wenn der "Verkaufen" Button gedrueckt wird.
+     */
     private void verkaufeKarten()
     {
-        // TODO Verkaufsaktion implementieren, kommentieren
-        // System.out.println("Verkauf"); //(als Test)
-    	
     	_verkauf = true;
-    	_ui.close(); //_ui- Methode zum Fensterschliessen
+    	_ui.schliesseFenster(); 
     }
 
     /**

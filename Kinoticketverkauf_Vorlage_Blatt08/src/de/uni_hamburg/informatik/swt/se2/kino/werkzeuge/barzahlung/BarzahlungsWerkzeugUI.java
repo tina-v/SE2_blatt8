@@ -1,6 +1,5 @@
 package de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.barzahlung;
 
-
 import java.awt.GridLayout;
 import java.awt.Dialog;
 import java.text.NumberFormat;
@@ -49,16 +48,20 @@ public class BarzahlungsWerkzeugUI
 
     /**
      * Initialisiert die UI.
+     * 
+     * @param preis der gesamtpreis der zu verkaufenden Karten
+     * 
+     * @require preis >= 0
      */
     public BarzahlungsWerkzeugUI(int preis)
     {
-    	
+        assert preis >= 0 : "Vorbedingung verletzt";
+
         _kartenPreis = preis;
         initialisiereEinzelKomponenten();
         initialisiereHauptPanel();
-        
-        erstelleDialog();
 
+        erstelleDialog();
     }
 
     /**
@@ -70,10 +73,10 @@ public class BarzahlungsWerkzeugUI
         _dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         _dialog.setTitle(TITEL);
         _dialog.setSize(WIDTH, HEIGHT);
-       _dialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+        _dialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
 
         _dialog.add(_hauptPanel);
-        
+
     }
 
     /**
@@ -83,14 +86,14 @@ public class BarzahlungsWerkzeugUI
     {
         _dialog.setVisible(true);
     }
-    
+
     /**
      * Erstellt das Hauptpanel im Gridlayout
      */
     private void initialisiereHauptPanel()
     {
         _hauptPanel = new JPanel();
-        _hauptPanel.setLayout(new GridLayout(4,2));
+        _hauptPanel.setLayout(new GridLayout(4, 2));
         _hauptPanel.add(_gesamtpreisBeschriftung);
         _hauptPanel.add(_gesamtpreisBetrag);
         _hauptPanel.add(_eingabepreisBeschriftung);
@@ -109,21 +112,20 @@ public class BarzahlungsWerkzeugUI
         _gesamtpreisBeschriftung = new JLabel("Gesamtbetrag:");
         _gesamtpreisBetrag = new JLabel(_kartenPreis + "");
 
-        _eingabepreisBeschriftung = new JLabel("Bezahlt (mit enter bestätigen):");
-        _eingabepreisTextfield = new JFormattedTextField(NumberFormat.getIntegerInstance());
+        _eingabepreisBeschriftung = new JLabel(
+                "Bezahlt (mit enter bestätigen):");
+        _eingabepreisTextfield = new JFormattedTextField(
+                NumberFormat.getIntegerInstance());
         //http://docs.oracle.com/javase/tutorial/uiswing/components/formattedtextfield.html
         _eingabepreisTextfield.setValue(new Integer(0));
 
         _wechselgeldBeschriftung = new JLabel("Restbetrag/Rückgeld:");
         _wechselgeldBetrag = new JLabel("0");
-        
+
         _verkaufenButton = new JButton("Verkaufen");
         _abbrechenButton = new JButton("Abbrechen");
-        
-    }
 
-    
-    
+    }
 
     /**
      * gibt das _verkaufenButton wieder.
@@ -142,7 +144,7 @@ public class BarzahlungsWerkzeugUI
     {
         return _abbrechenButton;
     }
-    
+
     /**
      * Gibt das Eingabefeld für den Preis zurueck
      * 
@@ -162,7 +164,7 @@ public class BarzahlungsWerkzeugUI
     {
         return _hauptPanel;
     }
-    
+
     /**
      * Gibt das JLabel für den Wechselgeldbetragzurueck.
      * 
@@ -172,13 +174,11 @@ public class BarzahlungsWerkzeugUI
     {
         return _wechselgeldBetrag;
     }
-    
-    public void setVerkaufenButtonAktiv(boolean aktiv)
-    {
-    	_verkaufenButton.setEnabled(aktiv);
-    }
-    
-    public void close()
+
+    /**
+     * Schließt das Dialogfenster des UI.
+     */
+    public void schliesseFenster()
     {
         _dialog.dispose();
     }
