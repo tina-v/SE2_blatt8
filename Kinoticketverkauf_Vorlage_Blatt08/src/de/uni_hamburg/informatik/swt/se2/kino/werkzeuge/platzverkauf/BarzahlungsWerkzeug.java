@@ -3,23 +3,30 @@ package de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.platzverkauf;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.SwingUtilities;
+import de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.platzverkauf.BarzahlungsWerkzeugUI;
 
-public class BarzahlungsWerkzeug //erbt nicht mehr
+
+// import javax.swing.SwingUtilities;
+
+public class BarzahlungsWerkzeug
 {
+	// UI zum Werkzeug
     private BarzahlungsWerkzeugUI _ui;
+    // der zu zahlende Preis
     private int _gesamtpreis;
 
     /**
      * Erzeugt ein neues BarzahlungsWerkzeug. 
      * (Da der Preis im Platzverkaufswerkzeug verfügbar ist, macht eine Übergabe Sinn) 
      * 
-     * @param gesamtpreis der zu bezahlende Kartenpreis  
+     * @param gesamtpreis der zu zahlende Gesamtpreis fuer die ausgewaehlten Plaetze  
      */
     public BarzahlungsWerkzeug(int gesamtpreis)
     {
-        _ui = new BarzahlungsWerkzeugUI(gesamtpreis);
         _gesamtpreis = gesamtpreis;
+        _ui = new BarzahlungsWerkzeugUI(_gesamtpreis);
+        // OK-Button erstmal inaktiv gesetzt
+        _ui.setVerkaufenButtonAktiv(false);
         registriereUIAktionen();
     }
 
@@ -94,4 +101,5 @@ public class BarzahlungsWerkzeug //erbt nicht mehr
     {
         //TODO reminder: int gesamtpreis ist gerade nur lokal.
     }
+    
 }

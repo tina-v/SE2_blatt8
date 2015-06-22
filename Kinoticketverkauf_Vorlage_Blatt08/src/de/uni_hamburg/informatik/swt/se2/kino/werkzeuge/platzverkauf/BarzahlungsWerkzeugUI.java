@@ -7,7 +7,7 @@ import java.text.NumberFormat;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
-import javax.swing.JFrame;
+// import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
@@ -49,6 +49,7 @@ public class BarzahlungsWerkzeugUI
      */
     public BarzahlungsWerkzeugUI(int preis)
     {
+    	
         _kartenPreis = preis;
         initialisiereEinzelKomponenten();
         initialisiereHauptPanel();
@@ -66,14 +67,14 @@ public class BarzahlungsWerkzeugUI
         _dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         _dialog.setTitle(TITEL);
         _dialog.setSize(WIDTH, HEIGHT);
-        //_dialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+ //       _dialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
 
         _dialog.add(_hauptPanel);
         _dialog.setVisible(true);
     }
 
     /**
-     * Erstellt das hauptpanel im Gridlayout
+     * Erstellt das Hauptpanel im Gridlayout
      */
     private void initialisiereHauptPanel()
     {
@@ -152,5 +153,10 @@ public class BarzahlungsWerkzeugUI
     public JLabel getWechselgeldLabel()
     {
         return _wechselgeldLabel;
+    }
+    
+    public void setVerkaufenButtonAktiv(boolean aktiv)
+    {
+    	_verkaufenButton.setEnabled(aktiv);
     }
 }
