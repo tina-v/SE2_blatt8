@@ -30,14 +30,14 @@ public class BarzahlungsWerkzeugUI
 
     private JPanel _hauptPanel;
 
-    private JLabel _gesamtpreisBeschriftungLabel;
-    private JLabel _gesamtpreisLabel;
+    private JLabel _gesamtpreisBeschriftung;
+    private JLabel _gesamtpreisBetrag;
 
-    private JLabel _eingabepreisBeschriftungLabel;
+    private JLabel _eingabepreisBeschriftung;
     private JFormattedTextField _eingabepreisTextfield;
 
-    private JLabel _wechselgeldLabel;
-    private JLabel _wechselgeldBetragLabel;
+    private JLabel _wechselgeldBetrag;
+    private JLabel _wechselgeldBeschriftung;
 
     private JButton _verkaufenButton;
     private JButton _abbrechenButton;
@@ -80,12 +80,12 @@ public class BarzahlungsWerkzeugUI
     {
         _hauptPanel = new JPanel();
         _hauptPanel.setLayout(new GridLayout(4,2));
-        _hauptPanel.add(_gesamtpreisBeschriftungLabel);
-        _hauptPanel.add(_gesamtpreisLabel);
-        _hauptPanel.add(_eingabepreisBeschriftungLabel);
+        _hauptPanel.add(_gesamtpreisBeschriftung);
+        _hauptPanel.add(_gesamtpreisBetrag);
+        _hauptPanel.add(_eingabepreisBeschriftung);
         _hauptPanel.add(_eingabepreisTextfield);
-        _hauptPanel.add(_wechselgeldBetragLabel);
-        _hauptPanel.add(_wechselgeldLabel);
+        _hauptPanel.add(_wechselgeldBeschriftung);
+        _hauptPanel.add(_wechselgeldBetrag);
         _hauptPanel.add(_verkaufenButton);
         _hauptPanel.add(_abbrechenButton);
     }
@@ -95,16 +95,16 @@ public class BarzahlungsWerkzeugUI
      */
     private void initialisiereEinzelKomponenten()
     {
-        _gesamtpreisBeschriftungLabel = new JLabel("Gesamtbetrag:");
-        _gesamtpreisLabel = new JLabel(_kartenPreis + "");
+        _gesamtpreisBeschriftung = new JLabel("Gesamtbetrag:");
+        _gesamtpreisBetrag = new JLabel(_kartenPreis + "");
 
-        _eingabepreisBeschriftungLabel = new JLabel("Bezahlt:");
+        _eingabepreisBeschriftung = new JLabel("Bezahlt:");
         _eingabepreisTextfield = new JFormattedTextField(NumberFormat.getIntegerInstance());
         //http://docs.oracle.com/javase/tutorial/uiswing/components/formattedtextfield.html
         _eingabepreisTextfield.setValue(new Integer(0));
 
-        _wechselgeldBetragLabel = new JLabel("Restbetrag/Rückgeld:");
-        _wechselgeldLabel = new JLabel("0");
+        _wechselgeldBeschriftung = new JLabel("Restbetrag/Rückgeld:");
+        _wechselgeldBetrag = new JLabel("0");
         
         _verkaufenButton = new JButton("Verkaufen");
         _abbrechenButton = new JButton("Abbrechen");
@@ -133,7 +133,8 @@ public class BarzahlungsWerkzeugUI
     }
     
     /**
-     * gibt das Eingabefeld für den Preis zurueck
+     * Gibt das Eingabefeld für den Preis zurueck
+     * 
      * @return _eingabepreisTextfield
      */
     public JFormattedTextField getEingabepreisTextfield()
@@ -142,7 +143,8 @@ public class BarzahlungsWerkzeugUI
     }
 
     /**
-     * gibt das _hauptPanel wieder.
+     * Gibt das _hauptPanel wieder.
+     * 
      * @return _hauptPanel
      */
     public JPanel getUIPanel()
@@ -150,9 +152,14 @@ public class BarzahlungsWerkzeugUI
         return _hauptPanel;
     }
     
+    /**
+     * Gibt das JLabel für den Wechselgeldbetragzurueck.
+     * 
+     * @return _wechselgeldBetrag
+     */
     public JLabel getWechselgeldLabel()
     {
-        return _wechselgeldLabel;
+        return _wechselgeldBetrag;
     }
     
     public void setVerkaufenButtonAktiv(boolean aktiv)
