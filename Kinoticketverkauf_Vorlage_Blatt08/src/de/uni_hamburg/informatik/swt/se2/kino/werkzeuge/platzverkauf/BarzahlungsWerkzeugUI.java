@@ -107,7 +107,7 @@ public class BarzahlungsWerkzeugUI
         _gesamtpreisBeschriftung = new JLabel("Gesamtbetrag:");
         _gesamtpreisBetrag = new JLabel(_kartenPreis + "");
 
-        _eingabepreisBeschriftung = new JLabel("Bezahlt:");
+        _eingabepreisBeschriftung = new JLabel("Bezahlt (mit enter bestätigen):");
         _eingabepreisTextfield = new JFormattedTextField(NumberFormat.getIntegerInstance());
         //http://docs.oracle.com/javase/tutorial/uiswing/components/formattedtextfield.html
         _eingabepreisTextfield.setValue(new Integer(0));
