@@ -11,6 +11,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
+import javax.swing.text.NumberFormatter;
 
 import de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.platzverkauf.PlatzVerkaufsWerkzeug;
 
@@ -114,8 +115,16 @@ public class BarzahlungsWerkzeugUI
 
         _eingabepreisBeschriftung = new JLabel(
                 "Bezahlt (mit enter bestätigen):");
-        _eingabepreisTextfield = new JFormattedTextField(
-                NumberFormat.getIntegerInstance());
+
+        NumberFormat format = NumberFormat.getIntegerInstance();
+        format.setGroupingUsed(false);
+        format.setMaximumIntegerDigits(7);
+        NumberFormatter formatter = new NumberFormatter(format);
+        formatter.setAllowsInvalid(false);
+        _eingabepreisTextfield = new JFormattedTextField(formatter);
+
+        //        _eingabepreisTextfield = new JFormattedTextField(
+        //              NumberFormat.getIntegerInstance());
         //http://docs.oracle.com/javase/tutorial/uiswing/components/formattedtextfield.html
         _eingabepreisTextfield.setValue(new Integer(0));
 

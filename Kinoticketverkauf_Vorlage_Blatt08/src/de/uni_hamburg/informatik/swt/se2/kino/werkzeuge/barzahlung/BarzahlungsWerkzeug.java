@@ -59,6 +59,7 @@ public class BarzahlungsWerkzeug
         });
 
         //Geldeingabe
+       
         _ui.getEingabepreisTextfield().addActionListener(new ActionListener()
         {
             @Override
@@ -75,7 +76,9 @@ public class BarzahlungsWerkzeug
      */
     private void beruecksichtigePreiseingabe() 
     {
-        int geldeingabe = Integer.parseInt(_ui.getEingabepreisTextfield().getText());
+        //int geldeingabe = Integer.parseInt(_ui.getEingabepreisTextfield().getText());
+        
+        int geldeingabe = ((Number)_ui.getEingabepreisTextfield().getValue()).intValue();
         
         if ((_gesamtpreis - geldeingabe) <= 0)
         {
@@ -83,6 +86,10 @@ public class BarzahlungsWerkzeug
             _ui.getWechselgeldLabel().setText((geldeingabe - _gesamtpreis) + "");
             //Button aktivieren
             _ui.getVerkaufenButton().setEnabled(true);
+        }
+        else
+        {
+            _ui.getVerkaufenButton().setEnabled(false);
         }
     }
 
